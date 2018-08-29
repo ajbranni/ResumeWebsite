@@ -2,8 +2,8 @@ version: 0.2
 
 env:
     variables:
-        S3_BUCKET: "photo-portfolio-app"
-        APP_NAME: "BrutalGal"
+        S3_BUCKET: "alexbrannick-resume-app"
+        APP_NAME: "ResumeWebsite"
         BUILD_ENV : "prod"
         CDN_DISTRIBUTION_ID: "E37Q5WSRACHM1D"
 
@@ -44,7 +44,7 @@ phases:
         - aws s3 cp dist/${APP_NAME} s3://${S3_BUCKET} --recursive
         - echo Build completed on `date`
         #invalidate cloudfront to reflect s3 changes
-        - aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/*"
+        #- aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/*"
 
 artifacts:
     files:
